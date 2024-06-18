@@ -27,14 +27,14 @@ class _HomePageState extends State<HomePage> {
       HomeButton(
           name: "Cattle",
           iconWidget: SvgPicture.asset(
-            'icons/cattle_icon.svg',
+            'assets/icons/cattle_icon.svg',
             height: iconSize,
           ),
           widget: const CattleManagerScreen()),
       HomeButton(
         name: "Reports",
         iconWidget: SvgPicture.asset(
-          'icons/reports_icon.svg',
+          'assets/icons/reports_icon.svg',
           height: iconSize,
         ),
         widget: const CattleReports(),

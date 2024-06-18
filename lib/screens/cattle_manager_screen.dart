@@ -125,7 +125,7 @@ class CattleManagerScreen extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(
-                                width: 16,
+                                width: 8,
                               ),
                             ],
                           ),

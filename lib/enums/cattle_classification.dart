@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:time_machine/time_machine.dart';
 
 enum CattleClassification {
-  calf("Calf", "icons/calf_icon.svg", Colors.green),
-  cow("Cow", "icons/cow_icon.svg", Colors.yellow),
-  bull("Bull", "icons/bull_icon.svg", Colors.blue);
+  calf("Calf", "assets/icons/calf_icon.svg", Colors.green),
+  cow("Cow", "assets/icons/cow_icon.svg", Colors.yellow),
+  bull("Bull", "assets/icons/bull_icon.svg", Colors.blue);
 
   static CattleClassification classify(DateTime birthDate, String gender) {
     Period timePeriod = _getPeriod(birthDate);
