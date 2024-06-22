@@ -35,65 +35,69 @@ class CattleReports extends StatelessWidget {
           ),
           title: const Text("Reports"),
         ),
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth < 600) {
-              return Column(
-                children: [
-                  Flexible(
-                    child: ListView.builder(
-                        padding: const EdgeInsets.only(top: 16),
-                        itemCount: classificationsList.length,
-                        scrollDirection: Axis.horizontal,
-                        itemExtent: screenWidth / classificationsList.length,
-                        itemBuilder: (context, index) {
-                          return CattleQuantityCard(
-                              cattleClassification: classificationsList
-                                  .elementAt(index)
-                                  .classification,
-                              quantity: getCattleQuantity(cattleList,
-                                  classificationsList.elementAt(index)),
-                              backgroundColor: classificationsList
-                                  .elementAt(index)
-                                  .colorIdentification,
-                              iconPath: classificationsList
-                                  .elementAt(index)
-                                  .iconPath);
-                        }),
-                  ),
-                  const Expanded(flex: 4, child: PieChartWithImages())
-                ],
-              );
-            } else {
-              return Row(
-                children: [
-                  Flexible(
-                    child: ListView.builder(
-                        itemCount: classificationsList.length,
-                        itemExtent:
-                            screenHeigth / classificationsList.length - 20,
-                        itemBuilder: (context, index) {
-                          return SizedBox(
-                            child: CattleQuantityCard(
-                                cattleClassification: classificationsList
-                                    .elementAt(index)
-                                    .classification,
-                                quantity: getCattleQuantity(cattleList,
-                                    classificationsList.elementAt(index)),
-                                backgroundColor: classificationsList
-                                    .elementAt(index)
-                                    .colorIdentification,
-                                iconPath: classificationsList
-                                    .elementAt(index)
-                                    .iconPath),
-                          );
-                        }),
-                  ),
-                  const Expanded(flex: 3, child: PieChartWithImages())
-                ],
-              );
-            }
-          },
-        ));
+        body: cattleList.isEmpty
+            ? const Center(child: Text("No cattle added yet!"))
+            : LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth < 600) {
+                    return Column(
+                      children: [
+                        Flexible(
+                          child: ListView.builder(
+                              padding: const EdgeInsets.only(top: 16),
+                              itemCount: classificationsList.length,
+                              scrollDirection: Axis.horizontal,
+                              itemExtent:
+                                  screenWidth / classificationsList.length,
+                              itemBuilder: (context, index) {
+                                return CattleQuantityCard(
+                                    cattleClassification: classificationsList
+                                        .elementAt(index)
+                                        .classification,
+                                    quantity: getCattleQuantity(cattleList,
+                                        classificationsList.elementAt(index)),
+                                    backgroundColor: classificationsList
+                                        .elementAt(index)
+                                        .colorIdentification,
+                                    iconPath: classificationsList
+                                        .elementAt(index)
+                                        .iconPath);
+                              }),
+                        ),
+                        const Expanded(flex: 4, child: PieChartWithImages())
+                      ],
+                    );
+                  } else {
+                    return Row(
+                      children: [
+                        Flexible(
+                          child: ListView.builder(
+                              itemCount: classificationsList.length,
+                              itemExtent:
+                                  screenHeigth / classificationsList.length -
+                                      20,
+                              itemBuilder: (context, index) {
+                                return SizedBox(
+                                  child: CattleQuantityCard(
+                                      cattleClassification: classificationsList
+                                          .elementAt(index)
+                                          .classification,
+                                      quantity: getCattleQuantity(cattleList,
+                                          classificationsList.elementAt(index)),
+                                      backgroundColor: classificationsList
+                                          .elementAt(index)
+                                          .colorIdentification,
+                                      iconPath: classificationsList
+                                          .elementAt(index)
+                                          .iconPath),
+                                );
+                              }),
+                        ),
+                        const Expanded(flex: 3, child: PieChartWithImages())
+                      ],
+                    );
+                  }
+                },
+              ));
   }
 }
