@@ -1,27 +1,25 @@
 import 'package:cattle_track/model_objects/home_button.dart';
-import 'package:cattle_track/screens/cattle_manager_screen.dart';
-import 'package:cattle_track/screens/cattle_reports.dart';
+import 'package:cattle_track/screens/desktop/cattle_manager_screen_desktop.dart';
+import 'package:cattle_track/screens/desktop/cattle_reports_desktop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageDesktop extends StatefulWidget {
+  const HomePageDesktop({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageDesktop> createState() => _HomePageDesktopState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageDesktopState extends State<HomePageDesktop> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.sizeOf(context).width;
     final screenHeight = MediaQuery.sizeOf(context).height;
 
-    double iconSize = screenWidth < 600 ? screenWidth * 0.3 : screenWidth * 0.1;
-    double buttonTextSize =
-        screenWidth < 600 ? screenHeight * 0.002 : screenHeight * 0.0035;
-    double titleSize =
-        screenWidth < 600 ? screenWidth * 0.003 : screenWidth * 0.002;
+    double iconSize = screenWidth * 0.1;
+    double buttonTextSize = screenHeight * 0.0035;
+    double titleSize = screenWidth * 0.002;
 
     final List<HomeButton> buttonsList = [
       HomeButton(
@@ -30,14 +28,14 @@ class _HomePageState extends State<HomePage> {
             'assets/icons/cattle_icon.svg',
             height: iconSize,
           ),
-          widget: const CattleManagerScreen()),
+          widget: const CattleManagerScreenDesktop()),
       HomeButton(
         name: "Reports",
         iconWidget: SvgPicture.asset(
           'assets/icons/reports_icon.svg',
           height: iconSize,
         ),
-        widget: const CattleReports(),
+        widget: const CattleReportsDesktop(),
       ),
     ];
 
@@ -61,9 +59,7 @@ class _HomePageState extends State<HomePage> {
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: screenWidth,
                       crossAxisSpacing: 16,
-                      mainAxisExtent: screenHeight > 600
-                          ? screenHeight / 2.5
-                          : screenHeight / 3,
+                      mainAxisExtent: screenHeight / 3,
                       mainAxisSpacing: 16),
                   itemCount: buttonsList.length,
                   itemBuilder: (context, index) {

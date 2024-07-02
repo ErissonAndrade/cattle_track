@@ -1,5 +1,7 @@
 import 'package:cattle_track/providers/cattle_provider.dart';
-import 'package:cattle_track/screens/home.dart';
+import 'package:cattle_track/responsive_layout.dart';
+import 'package:cattle_track/screens/desktop/home_desktop.dart';
+import 'package:cattle_track/screens/mobile/home_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const HomePage());
+        home: const ResponsiveLayout(
+            mobileBody: HomePageMobile(), desktopBody: HomePageDesktop()));
   }
 }

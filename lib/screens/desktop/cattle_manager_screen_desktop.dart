@@ -1,13 +1,13 @@
 import 'package:cattle_track/model_objects/cattle.dart';
 import 'package:cattle_track/model_objects/cattle_menu_item.dart';
 import 'package:cattle_track/providers/cattle_provider.dart';
-import 'package:cattle_track/screens/cattle_form.dart';
+import 'package:cattle_track/screens/forms/cattle_form.dart';
 import 'package:cattle_track/widgets/cattle_popup_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CattleManagerScreen extends StatelessWidget {
-  const CattleManagerScreen({super.key});
+class CattleManagerScreenDesktop extends StatelessWidget {
+  const CattleManagerScreenDesktop({super.key});
 
   void _showDeleteConfirmationDialog(BuildContext context, Cattle cattle) {
     var cattleProvider = context.read<CattleProvider>();
@@ -52,12 +52,9 @@ class CattleManagerScreen extends StatelessWidget {
     List<Cattle> cattleList = context.watch<CattleProvider>().cattleList;
 
     final double screenWidth = MediaQuery.sizeOf(context).width;
-    final double iconWidth =
-        screenWidth < 600 ? screenWidth * 0.07 : screenWidth * 0.15;
-    final double listTileFontSize =
-        screenWidth < 600 ? screenWidth * 0.0016 : screenWidth * 0.0013;
-    final double iconPopupMenuSize =
-        screenWidth < 600 ? screenWidth * 0.04 : screenWidth * 0.03;
+    final double iconWidth = screenWidth * 0.15;
+    final double listTileFontSize = screenWidth * 0.0013;
+    final double iconPopupMenuSize = screenWidth * 0.03;
 
     return Scaffold(
         appBar: AppBar(
